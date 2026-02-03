@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen Chynarh ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap');
+
+        body {
+            margin: 0; padding: 0; background: #ffeef8;
+            font-family: 'Poppins', sans-serif; color: #b02a6b;
+            overflow-x: hidden; text-align: center;
+        }
+
+        .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+        
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3.2rem; color: #ff3385; margin-bottom: 10px; }
+
+        .declaration {
+            font-size: 1.1rem; background: white; padding: 20px;
+            border-radius: 30px; border: 3px dashed #ff3385; margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        .reasons-card {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px; border-radius: 20px;
+            text-align: left; margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.1);
+        }
+
+        .reasons-card h3 { font-family: 'Dancing Script', cursive; font-size: 2rem; text-align: center; margin-top: 0; }
+
+        .question-box {
+            background: #fff; padding: 30px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            margin-top: 20px; position: relative; min-height: 400px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+
+        .question-box h2 { font-family: 'Dancing Script', cursive; font-size: 2.2rem; margin-bottom: 20px; }
+
+        .btn-container {
+            display: flex; justify-content: center; align-items: center;
+            gap: 15px; width: 100%; position: relative;
+        }
+
+        #yesBtn {
+            background-color: #ff3385; color: white; border: none;
+            padding: 12px 35px; font-size: 1.2rem; border-radius: 50px;
+            cursor: pointer; transition: transform 0.2s ease; font-weight: bold;
+            z-index: 10;
+        }
+
+        #noBtn {
+            background-color: #f0f0f0; color: #666; border: none;
+            padding: 12px 25px; font-size: 1.1rem; border-radius: 50px;
+            cursor: pointer; transition: 0.1s; z-index: 5;
+        }
+
+        #success-msg { display: none; margin-top: 20px; animation: pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+
+        .floating-heart {
+            position: fixed; color: #ff3385; font-size: 20px;
+            user-select: none; z-index: -1; animation: float 5s linear infinite; opacity: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        footer { margin-top: 40px; font-size: 0.8rem; opacity: 0.7; padding-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hi Chynarh! ❤️</h1>
+        
+        <div class="declaration">
+            "I know you have a million things to worry about, but I'm here to remind you that I've always got you."
+        </div>
+
+        <div class="reasons-card">
+            <h3>Why I'm Crazy About You:</h3>
+            <ul style="list-style-type: '💖 '; line-height: 1.8; padding-left: 20px;">
+                <li>If you were a vegetable, you’d be a <b>"cute-cumber."</b></li>
+                <li>I’m not a photographer, but I can definitely <b>picture us together</b> forever.</li>
+                <li>You’re my <b>personal cardio</b>—my heart races every time I see you!</li>
+                <li>You’re like <b>party Jollof</b>—the only thing I’m actually looking for.</li>
+                <li>Even if there was no gravity on Earth, I’d still <b>fall for you.</b></li>
+                <li>Your facial expressions... they drive me crazy in the best way possible.</li>
+                <li>I love the way you care so deeply, even when you're worrying.</li>
+            </ul>
+        </div>
+
+        <div class="question-box" id="mainBox">
+            <h2 id="questionText">Will you be my Valentine?</h2>
+            
+            <div class="btn-container" id="btnWrapper">
+                <button id="yesBtn" onclick="celebrate()">YES!</button>
+                <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No</button>
+            </div>
+
+            <div id="success-msg">
+                <h2 style="color: #ff3385;">YAY! STOP WORRYING NOW! 😍</h2>
+                <p>You're stuck with me forever, Chynarh!</p>
+                <div style="font-size: 80px;">💖✨</div>
+            </div>
+        </div>
+
+        <footer>
+            Built with 100% devotion for the girl with my favorite face.
+        </footer>
+    </div>
+
+    <script>
+        let yesScale = 1;
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const successMsg = document.getElementById('success-msg');
+        const questionText = document.getElementById('questionText');
+        const btnWrapper = document.getElementById('btnWrapper');
+
+        function moveNo() {
+            yesScale += 0.5;
+            yesBtn.style.transform = `scale(${yesScale})`;
+
+            const padding = 60;
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            btnWrapper.style.display = 'none';
+            questionText.style.display = 'none';
+            successMsg.style.display = 'block';
+            for(let i=0; i<40; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
